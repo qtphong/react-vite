@@ -1,0 +1,139 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      :root {
+        --main-color: #3498db;
+        --secondary-color: #2ecc71;
+        --font-size: 16px;
+      }
+      .grid-container {
+        display: grid;
+        grid-template-areas:
+          "header header header"
+          "sidebar main main"
+          "footer footer footer";
+        grid-gap: 20px;
+      }
+      .header {
+        grid-area: header;
+      }
+      .sidebar {
+        grid-area: sidebar;
+      }
+      .main {
+        grid-area: main;
+      }
+      .footer {
+        grid-area: footer;
+      }
+
+      .grid-item {
+        background-color: #f0f0f0;
+        padding: 20px;
+        text-align: center;
+      }
+
+      .button {
+        background-color: var(--main-color);
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        transition: background-color 0.8s ease;
+      }
+      .button:hover {
+        background-color: var(--secondary-color);
+      }
+
+      .circle-shape {
+        width: 200px;
+        height: 200px;
+        float: left;
+        shape-outside: circle(50%);
+        clip-path: circle(50%);
+        background-color: #3498db;
+        transition: background-color 0.5s ease;
+      }
+
+      .circle-shape:hover {
+        background-color: #2980b9;
+      }
+
+      body {
+        counter-reset: section;
+      }
+      h2 {
+        counter-reset: subsection;
+      }
+      h3::before {
+        counter-increment: subsection;
+        content: "Section " counter(subsection) ": ";
+      }
+      h2::before {
+        counter-increment: section;
+        content: "Section " counter(section) ": ";
+      }
+      * {
+        scrollbar-width: thin;
+        scrollbar-color: #888 #f1f2f2;
+      }
+      .tooltip {
+        position: relative;
+        display: inline-block;
+        border-bottom: 1px dotted black;
+      }
+      .tooltip .tooltiptext {
+        visibility: hidden;
+        width: 120px;
+        background-color: black;
+        color: #fff;
+        text-align: center;
+        border-radius: 6px;
+        padding: 5px 0;
+        position: absolute;
+        z-index: 1;
+        bottom: 125%;
+        left: 50%;
+        margin-left: -60px;
+        opacity: 0;
+        transition: opacity 0.3s;
+      }
+      .tooltip:hover .tooltiptext {
+        visibility: visible;
+        opacity: 1;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="grid-container">
+      <div class="header grid-item">header</div>
+      <div class="sidebar grid-item">sidebar</div>
+      <div class="main grid-item">
+        <button class="button">Hello World</button>
+        <div></div>
+        <div class="circle-shape"></div>
+        <h2>One</h2>
+        <h3>a</h3>
+        <h3>b</h3>
+        <h3>c</h3>
+        <h2>Two</h2>
+        <h3>a</h3>
+        <h3>b</h3>
+        <h3>c</h3>
+        <h2>Three</h2>
+        <h2>Four</h2>
+
+        <div class="tooltip">
+          Hover over me
+          <span class="tooltiptext"
+            >Tooltip textTooltip textTooltip textTooltip textTooltip textTooltip
+            textTooltip text</span
+          >
+        </div>
+      </div>
+      <div class="footer grid-item">footer</div>
+    </div>
+  </body>
+</html>
